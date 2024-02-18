@@ -10,3 +10,7 @@ export const orderSlotsByStartTime = (slots: SlotType[]): SlotType[] => {
 
   return sortedSlots;
 };
+
+export const dateStringtoDateStringISOFormat = (date: string): string => {
+  return new Date(date).toISOString().slice(0, -5) + "Z";
+};
