@@ -33,6 +33,11 @@ const CalendarSlot = ({
     user.__typename === UserTypes.Student
       ? slot.coach?.name || "Free"
       : slot.student?.name || "Free";
+  // Show Student Satisfaction only if the slot is in the past and there is a student assigned
+  const showStudentSatisfaction =
+    user.__typename === UserTypes.Coach &&
+    slot.student &&
+    new Date() > new Date(slot.endTime);
 
   const handleBookSlotClick = () => {
     const variables = { input: { id: slot.id, studentId: user.id } };
@@ -51,6 +56,12 @@ const CalendarSlot = ({
         <button style={buttonStyle} onClick={handleBookSlotClick}>
           Book Slot
         </button>
+      )}
+      {showStudentSatisfaction && (
+        <div>
+          <p>Student Satisfaction: {slot.rate}</p>
+          <p>Note: {slot.note}</p>
+        </div>
       )}
     </div>
   );
