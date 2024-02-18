@@ -2,6 +2,7 @@ import { GET_USER } from "../graphql/queries";
 import { useQuery } from "urql";
 import { UserTypes } from "../graphql/types";
 import StudentCalendar from "./StudentCalendar";
+import CoachCalendar from "./CoachCalendar";
 
 const UserPage = ({ userId }: { userId: string }): JSX.Element => {
   const [{ fetching, data, error }] = useQuery({
@@ -22,6 +23,7 @@ const UserPage = ({ userId }: { userId: string }): JSX.Element => {
         Hello {userType} {name}
       </h1>
       {userType === UserTypes.Student && <StudentCalendar student={user} />}
+      {userType === UserTypes.Coach && <CoachCalendar coach={user} />}
     </>
   );
 };
