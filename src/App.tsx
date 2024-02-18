@@ -1,6 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import UserPage from "./components/UserPage";
 
 const App = (): JSX.Element => {
   const [userId, setUserId] = useState<string | null>(null);
@@ -18,7 +19,11 @@ const App = (): JSX.Element => {
       </p>
     );
 
-  return <div className="App">Hello user {userId}</div>;
+  return (
+    <div className="App">
+      <UserPage userId={userId}></UserPage>
+    </div>
+  );
 };
 
 export default App;
