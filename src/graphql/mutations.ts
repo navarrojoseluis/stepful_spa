@@ -12,3 +12,18 @@ export const CREATE_SLOT = gql`
     }
   }
 `;
+
+export const UPDATE_SLOT = gql`
+  mutation UpdateSlot($input: UpdateSlotMutationInput!) {
+    updateSlot(input: $input) {
+      slot {
+        id
+        student {
+          id
+          name
+        }
+      }
+      error
+    }
+  }
+`;

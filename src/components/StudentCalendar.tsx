@@ -25,6 +25,7 @@ const StudentCalendar = ({
           title="Available Times"
           slots={student.availableTimes}
           user={student}
+          showBookSlotButton={true}
         />
       </div>
     </div>

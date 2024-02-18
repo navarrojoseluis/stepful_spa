@@ -6,10 +6,12 @@ const Calendar = ({
   title,
   slots,
   user,
+  showBookSlotButton = false,
 }: {
   title: string;
   slots: SlotType[];
   user: CoachType | StudentType;
+  showBookSlotButton?: boolean;
 }): JSX.Element => {
   const sortedSlots = orderSlotsByStartTime(slots);
 
@@ -17,7 +19,14 @@ const Calendar = ({
     <>
       <h2>{title}</h2>
       {sortedSlots.map((slot: SlotType) => {
-        return <CalendarSlot key={slot.id} user={user} slot={slot} />;
+        return (
+          <CalendarSlot
+            key={slot.id}
+            user={user}
+            slot={slot}
+            showBookSlotButton={showBookSlotButton}
+          />
+        );
       })}
     </>
   );
